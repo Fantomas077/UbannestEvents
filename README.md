@@ -1,0 +1,39 @@
+# Ubannest Events
+
+Ubannest Events ist eine Webanwendung, mit der Benutzer Veranstaltungen entdecken, erstellen und sich dafür anmelden können.  
+Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authentifizierung und Autorisierung.
+
+## ✨ Funktionen
+
+- Benutzerregistrierung und -anmeldung
+- Veranstaltungen durchsuchen und nach Stichwörtern filtern
+- Anmeldung und Abmeldung zu Veranstaltungen
+- Verwaltung eigener Anmeldungen
+- Veranstaltungsverwaltung für Administratoren (Erstellen, Bearbeiten, Löschen)
+- Kategorisierung der Veranstaltungen
+- Pagination und Suche
+- AJAX-Interaktionen für bessere Benutzererfahrung
+- Sichere Rollen- und Zugriffsverwaltung
+
+## 🛠️ Technologien
+
+- ASP.NET Core MVC
+- Entity Framework Core
+- ASP.NET Identity
+- Bootstrap 5
+- MS SQL Server / SQLite (je nach Konfiguration)
+
+## 🚀 Lokale Installation
+
+### Voraussetzungen
+
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download) (Version 8.0 oder höher empfohlen)
+- Visual Studio 2022 / 2025 (mit ASP.NET und Webentwicklung Workload)
+- SQL Server Express oder SQLite
+
+### Schritte
+
+1. **Projekt klonen**
+   ```bash
+   git clone https://github.com/dein-benutzername/ubannest-events.git
+   cd ubannest-events
