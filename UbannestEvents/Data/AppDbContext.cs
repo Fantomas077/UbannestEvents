@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UbannestEvents.Models;
 
 namespace UbannestEvents.Data
 {
@@ -8,5 +9,6 @@ namespace UbannestEvents.Data
         {
             
         }
+        public DbSet<Category> Categories { get; set; }
     }
 }
