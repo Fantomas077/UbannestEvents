@@ -1,0 +1,67 @@
+﻿@model UbannestEvents.ViewModels.RegisterVM
+@using  Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+        <h2 class="text-center mb-4">Create an Account</h2>
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-3">
+                <label asp-for="ConnfirmPassword" class="form-label"></label>
+                <input asp-for="ConnfirmPassword" class="form-control" type="password" />
+                <span asp-validation-for="ConnfirmPassword" class="text-danger"></span>
+            </div>
+           
+            <!-- Select role -->
+        
+            <div class="mb-3">
+                <label asp-for="SelectedRole" class="form-label">Select Role</label>
+                <select asp-for="SelectedRole" asp-items="Model.RoleLIst" class="form-control">
+                    <option disabled selected value="">-- Select role --</option>
+                </select>
+                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+            </div>
+
+
+            <!-- Hidden ReturnUrl -->
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <!-- Submit Button -->
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+
+            <!-- Login Link -->
+            <div class="text-center">
+                <a asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">Already have an account? Log in</a>
+            </div>
+        </form>
+    </div>
+</div>

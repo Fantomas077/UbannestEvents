@@ -1,5 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model UbannestEvents.Areas.Admin.Models.HomeVM
 @{
+    ViewData["Title"] = "Admin-Dashboard";
 }
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+<div class="container mx-auto px-4 mt-10">
+    <h2 class="text-4xl font-bold text-gray-800 mb-8">Admin-Dashboard</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Events -->
+        <div class="bg-indigo-500 text-white shadow-lg rounded-lg p-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-3xl font-bold">@Model.Events.Count()</h3>
+                    <p>Veranstaltungen</p>
+                </div>
+                <div class="text-5xl">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+            <a href="/Admin/Event/Index" class="block mt-4 text-sm text-white opacity-75 hover:opacity-100 transition">
+                Alle Veranstaltungen <i class="fas fa-arrow-circle-right"></i>
+            </a>
+        </div>
+
+        <!-- Kategorien -->
+        <div class="bg-green-500 text-white shadow-lg rounded-lg p-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-3xl font-bold">@Model.Categories.Count()</h3>
+                    <p>Kategorien</p>
+                </div>
+                <div class="text-5xl">
+                    <i class="fas fa-tags"></i>
+                </div>
+            </div>
+            <a href="/Admin/Category/Index" class="block mt-4 text-sm text-white opacity-75 hover:opacity-100 transition">
+                Kategorien anzeigen <i class="fas fa-arrow-circle-right"></i>
+            </a>
+        </div>
+
+        <!-- Benutzer -->
+        <div class="bg-blue-500 text-white shadow-lg rounded-lg p-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-3xl font-bold">@Model.users.Count()</h3>
+                    <p>Benutzer</p>
+                </div>
+                <div class="text-5xl">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+            <a href="/Admin/User/Index" class="block mt-4 text-sm text-white opacity-75 hover:opacity-100 transition">
+                Benutzer verwalten <i class="fas fa-arrow-circle-right"></i>
+            </a>
+        </div>
+
+        <!-- Statistiken -->
+        <div class="bg-yellow-500 text-white shadow-lg rounded-lg p-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-3xl font-bold">Mehr</h3>
+                    <p>Statistiken</p>
+                </div>
+                <div class="text-5xl">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+            <a href="/Admin/Stats" class="block mt-4 text-sm text-white opacity-75 hover:opacity-100 transition">
+                Statistiken anzeigen <i class="fas fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>

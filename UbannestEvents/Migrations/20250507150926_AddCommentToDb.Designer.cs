@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UbannestEvents.Data;
 
@@ -11,9 +12,11 @@ using UbannestEvents.Data;
 namespace UbannestEvents.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250507150926_AddCommentToDb")]
+    partial class AddCommentToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -264,13 +267,11 @@ namespace UbannestEvents.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EventID");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Komments");
                 });
@@ -317,7 +318,7 @@ namespace UbannestEvents.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("UbannestEvents.Models.Favori", b =>
+            modelBuilder.Entity("UbannestEvents.Models.Kommentare", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -325,7 +326,11 @@ namespace UbannestEvents.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DateAdd")
+                    b.Property<string>("CommenText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DatePosted")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("EventID")
@@ -333,15 +338,13 @@ namespace UbannestEvents.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EventID");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Favoris");
+                    b.ToTable("Kommentare");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -398,20 +401,12 @@ namespace UbannestEvents.Migrations
             modelBuilder.Entity("UbannestEvents.Models.Comment", b =>
                 {
                     b.HasOne("UbannestEvents.Models.Event", "Event")
-                        .WithMany("Komments")
+                        .WithMany()
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UbannestEvents.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Event");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UbannestEvents.Models.Event", b =>
@@ -425,28 +420,15 @@ namespace UbannestEvents.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("UbannestEvents.Models.Favori", b =>
+            modelBuilder.Entity("UbannestEvents.Models.Kommentare", b =>
                 {
                     b.HasOne("UbannestEvents.Models.Event", "Event")
-                        .WithMany("Favoris")
+                        .WithMany("Komments")
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UbannestEvents.Models.ApplicationUser", "User")
-                        .WithMany("Favoris")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Event");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("UbannestEvents.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Favoris");
                 });
 
             modelBuilder.Entity("UbannestEvents.Models.Category", b =>
@@ -456,8 +438,6 @@ namespace UbannestEvents.Migrations
 
             modelBuilder.Entity("UbannestEvents.Models.Event", b =>
                 {
-                    b.Navigation("Favoris");
-
                     b.Navigation("Komments");
                 });
 #pragma warning restore 612, 618

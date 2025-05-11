@@ -1,22 +1,58 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using UbannestEvents.Data;
 using UbannestEvents.Models;
+using UbannestEvents.ViewModels;
 
 namespace UbannestEvents.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AppDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var now = DateTime.Now;
+            var today = now.Date;
+            var tomorrow = today.AddDays(1);
+
+            var Incoming = _context.Events
+                .Include(r => r.Category)
+                .Where(r => r.StartDate >= tomorrow) // tout ce qui est après aujourd'hui
+                .Take(4)
+                .ToList();
+
+            var Today = _context.Events
+                .Include(r => r.Category)
+                .Where(r => r.StartDate >= today && r.StartDate < tomorrow)
+                .Take(4)
+                .ToList();
+            var Most = _context.Events
+                    .Include(r => r.Category)
+                    .OrderByDescending(r => r.ViewCount) // Trier par nombre de vues décroissant
+                    .Take(4)
+                    .ToList();
+
+            var obj = new HomeVM()
+            {
+                IncommingsEvent = Incoming,
+                TodayEvents = Today,
+                MostView = Most,
+                Categories = _context.Categories.ToList()
+            };
+
+            return View(obj);
         }
+
+
 
         public IActionResult Privacy()
         {

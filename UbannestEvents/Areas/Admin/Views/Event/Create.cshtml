@@ -1,0 +1,83 @@
+﻿@model UbannestEvents.Models.Event
+@{
+    ViewData["Title"] = "Create Event";
+}
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="card col-md-12 p-3 mb-3 border-0 shadow ">
+                <h3 class="text-center text-success mb-3">Create Event</h3>
+                <form asp-controller="Event" asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div class="mb-3 form-floating">
+                        <input asp-for="Title" class="form-control" />
+                        <label asp-for="Title" class="form-label"></label>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 ">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" ></textarea>
+                       
+                        <span asp-validation-for="Description" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input asp-for="Location" class="form-control" />
+                        <label asp-for="Location" class="form-label"></label>
+                        <span asp-validation-for="Location" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input asp-for="StartDate" class="form-control" type="datetime-local" />
+                        <label asp-for="StartDate" class="form-label"></label>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input asp-for="EndDate" class="form-control" type="datetime-local" />
+                        <label asp-for="EndDate" class="form-label"></label>
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-floating mb-3">
+
+                        <select asp-for="CategoryID" asp-items="@ViewBag.Categories" class="form-select"><option disabled selected>-Select Category-</option></select>
+                        <label asp-for="CategoryID" class="ms-2">Category </label>
+
+                        <span asp-validation-for="CategoryID" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input asp-for="ImgageCovername" type="file" name="ImageFile" class="form-control" />
+                        <label asp-for="ImgageCovername" class="form-label"></label>
+                        <span asp-validation-for="ImgageCovername" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="">
+                        <button type="submit" asp-action="Create" class="w-25 btn btn-success">Create</button>
+                        <a asp-action="Index" class="btn btn-secondary w-25">Back To Home</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        tinymce.init({
+          selector: 'textarea',
+          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
+</body>
+</html>

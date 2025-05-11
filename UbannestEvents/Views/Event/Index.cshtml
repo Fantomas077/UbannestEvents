@@ -1,0 +1,55 @@
+﻿@model IEnumerable<UbannestEvents.Models.Event>
+@using UbannestEvents.Utilities
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between  mb-4">
+        <h2 class="mb-0 ">Unsere Veranstaltung</h2>
+        @if (Context.Request.Path.Value.Contains("KommendeEvents"))
+        {
+            <a href="/Event/Index" class="btn btn-outline-secondary">
+                🔙 Alle Events anzeigen
+            </a>
+        }
+        else
+        {
+            if (Context.Request.Path.Value.Contains("MostWached"))
+            {
+                <a href="/Event/Index" class="btn btn-outline-secondary">
+                    🔙 Alle Events anzeigen
+                </a>
+            }
+        }
+
+    </div>
+
+    <div class="row g-4">
+        @foreach (var obj in Model)
+        {
+            <div class="col-lg-3 col-md-4 d-flex">
+                <div class="card shadow-sm border-0 rounded-4 w-100 h-100">
+                    <img src="~/images/Cover/@obj.ImgageCovername"
+                         class="card-img-top rounded-top-4 object-fit-cover"
+                         alt="@obj.Title" style="height: 200px;">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <h5 class="card-title mb-0">@obj.Title</h5>
+                                <span class="badge bg-warning text-dark">@obj.Category?.Name</span>
+                            </div>
+                            <p class="card-text text-muted mb-3">
+                                @Html.Raw(TruncateText.Truncate(obj.Description, 80))
+                            </p>
+                        </div>
+                        <a asp-controller="Event" asp-action="EventsDetails" asp-route-id="@obj.Id" class="btn btn-outline-success mt-auto align-self-start">
+                            Mehr wissen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

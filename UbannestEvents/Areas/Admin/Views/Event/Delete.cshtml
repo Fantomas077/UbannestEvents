@@ -1,0 +1,72 @@
+﻿@model UbannestEvents.Models.Event
+@{
+    ViewData["Title"] = "Delete Event";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="card col-md-12 p-3 mb-3 border-0 shadow ">
+                <h3 class="text-center text-danger mb-3">Delete Event</h3>
+                <form asp-controller="Event" asp-action="Delete" method="post" enctype="multipart/form-data">
+                    <div class="mb-3 form-floating">
+                        <input asp-for="Title" class="form-control" readonly/>
+                        <label asp-for="Title" class="form-label"></label>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <textarea asp-for="Description" class="form-control" readonly></textarea>
+                        <label asp-for="Description" class="form-label"></label>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input asp-for="Location" class="form-control" readonly/>
+                        <label asp-for="Location" class="form-label"></label>
+                        <span asp-validation-for="Location" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input asp-for="StartDate" class="form-control" type="datetime-local" readonly />
+                        <label asp-for="StartDate" class="form-label"></label>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input asp-for="EndDate" class="form-control" type="datetime-local" readonly/>
+                        <label asp-for="EndDate" class="form-label"></label>
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-floating mb-3">
+
+                        <select asp-for="CategoryID" asp-items="@ViewBag.Categories" class="form-select" disabled><option disabled selected>-Select Category-</option></select>
+                        <label asp-for="CategoryID" class="ms-2">Category </label>
+
+                        <span asp-validation-for="CategoryID" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3">
+                        <img src="/images/Cover/@Model.ImgageCovername" alt="@Model.ImgageCovername" class="img-thumbnail" style="height:50px;width:100px"/>
+                    </div>
+
+                    <div class="">
+                        <button type="submit" asp-action="Delete" class="w-25 btn btn-danger">Create</button>
+                        <a asp-action="Index" class="btn btn-secondary w-25">Back To Home</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

@@ -1,8 +1,167 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model UbannestEvents.ViewModels.HomeVM
+@using UbannestEvents.Utilities
+
+@{
+    Layout = "_Layout"; // si tu utilises une layout Razor
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center text-white mb-5"
+style="background-image: url('/images/logo/event.jpg'); background-size: cover; background-position: center; height: 80vh;">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold ">Finde dein nächstes Event</h1>
+        <p class="lead mt-3 ">Ob Musik, Kunst, Sport oder Bildung – bei Ubannest findest du alles!</p>
+        <div class="mt-4">
+            <a class="btn btn-warning btn-lg me-3" asp-controller="Event" asp-action="Index">
+                🔍 Events entdecken
+            </a>
+        </div>
+    </div>
+</section>
+<!--KAtegorie-->
+<section class="container d-flex justify-content-center">
+
+    @foreach (var evt in Model.Categories)
+    {
+        <div class="">
+
+            <a asp-controller="Event" asp-action="Kat" asp-route-name="@evt.Name" class="badge bg-warning text-dark me-3 btn">@evt.Name</a>
+
+        </div>
+
+
+    }
+
+
+</section>
+
+<!-- Heutige Events -->
+@if(Model.TodayEvents==null && Model.TodayEvents.Any())
+{
+    
+    <section class="container my-5">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <h2 class="fw-bold">📅 Heutige Events</h2>
+            </div>
+            <div class="col-md-4 text-end">
+                <a asp-controller="Event" asp-action="HeutigeEvents" class="text-decoration-none text-primary">
+                    Alle heutigen Events anzeigen <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var evt in Model.TodayEvents)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 transition hover-shadow">
+                        <img src="~/images/Cover/@evt.ImgageCovername"
+                             class="card-img-top rounded-top-4 object-fit-cover"
+                             alt="@evt.Title"
+                             style="height: 200px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="card-title mb-0">@evt.Title</h5>
+                                    <span class="badge bg-warning text-dark">@evt.Category?.Name</span>
+                                </div>
+                                <p class="text-muted mb-3">@Html.Raw(TruncateText.Truncate(evt.Description, 80))</p>
+                            </div>
+                            <a asp-controller="Event" asp-action="EventsDetails" asp-route-id="@evt.Id" class="btn btn-outline-success mt-auto">
+                                Mehr wissen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}
+
+
+
+<!-- Incoming Events -->
+<section class="container my-5">
+    <div class="row align-items-center mb-4">
+        <div class="col-md-8">
+            <h2 class="fw-bold">📆 Kommende Events</h2>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-controller="Event" asp-action="KommendeEvents" class="text-decoration-none text-primary">
+                Alle kommenden Events anzeigen <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var evt in Model.IncommingsEvent)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm border-0 rounded-4 transition hover-shadow">
+                    <img src="~/images/Cover/@evt.ImgageCovername"
+                         class="card-img-top rounded-top-4 object-fit-cover"
+                         alt="@evt.Title"
+                         style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0">@evt.Title</h5>
+                                <span class="badge bg-info text-dark">@evt.Category?.Name</span>
+                            </div>
+                            <p class="text-muted mb-3">@Html.Raw(TruncateText.Truncate(evt.Description, 80))</p>
+                        </div>
+                        <a asp-controller="Event" asp-action="EventsDetails" asp-route-id="@evt.Id" class="btn btn-outline-primary mt-auto">
+                            Mehr wissen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- MostView Events -->
+<section class="container my-5">
+    <div class="row align-items-center mb-4">
+        <div class="col-md-8">
+            <h2 class="fw-bold">📆 MostView Events</h2>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-controller="Event" asp-action="MostWached" class="text-decoration-none text-primary">
+                Alle MostView Events anzeigen <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var evt in Model.MostView)
+        {
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 shadow-sm border-0 rounded-4 transition hover-shadow">
+                    <img src="~/images/Cover/@evt.ImgageCovername"
+                         class="card-img-top rounded-top-4 object-fit-cover"
+                         alt="@evt.Title"
+                         style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0">@evt.Title</h5>
+                                <span class="badge bg-success text-dark">@evt.Category?.Name</span>
+                            </div>
+                            <p class="text-muted mb-3">@Html.Raw(TruncateText.Truncate(evt.Description, 80))</p>
+                        </div>
+                        <a asp-controller="Event" asp-action="EventsDetails" asp-route-id="@evt.Id" class="btn btn-outline-primary mt-auto">
+                            Mehr wissen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transition: 0.3s ease-in-out;
+    }
+</style>

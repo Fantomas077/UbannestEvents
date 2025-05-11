@@ -1,0 +1,90 @@
+﻿@model IEnumerable<UbannestEvents.Models.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="card border-primary mb-3">
+        <div class="card-header bg-primary text-white">Event</div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row pt-4 pb-2">
+
+                    <div class="col-12 text-end">
+                        <a asp-controller="Event" asp-action="Create" class="btn btn-primary">Create New Event <i class="bi bi-plus-circle"></i></a>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Location
+                            </th>
+                            <th>
+                                StartDate
+                            </th>
+                            <th>
+                                EndDate
+                            </th>
+                            <th>
+                                Category
+                            </th>
+                            <th>
+                                Cover
+                            </th>
+
+                            <th></th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        @foreach (var obj in Model.OrderBy(u => u.Title))
+                        {
+                            
+                            <tr>
+                                <td>@obj.Title</td>
+
+                                <td>@Html.Raw(TruncateText.Truncate(obj.Description, 30))</td>
+                                <td>@obj.Location</td>
+                                <td>@obj.StartDate</td>
+                                <td>@obj.EndDate</td>
+                                <td>@obj.Category.Name</td>
+                                <td><img src="/images/Cover/@obj.ImgageCovername" alt="@obj.ImgageCovername" class="img-thumbnail" style="height:50px;width:100%" /></td>
+
+
+                                <td style="width:300px">
+                                    <div class="btn-group d-flex justify-content-center ">
+                                        <a asp-controller="Event" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-info me-2"><i class="bi bi-pencil-square"></i> Edit</a>
+                                        <a asp-controller="Event" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Delete</a>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+

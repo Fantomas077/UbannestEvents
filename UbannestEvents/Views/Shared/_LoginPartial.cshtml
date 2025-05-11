@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using UbannestEvents.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+
+        <title></title>
+    </head>
+    <body>
+    <ul class="d-flex align-items-center list-unstyled m-0">
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            var user = await UserManager.GetUserAsync(User);
+
+            <li class="nav-item dropdown mx-2">
+                <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-circle me-2"></i> Hallo, @user.FullName
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="fas fa-heart me-2"></i>My Favoris Event</a>
+                    </li>
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                            <button type="submit" class="dropdown-item text-danger">
+                                <i class="fas fa-sign-out-alt me-2"></i>Loggout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        }
+
+        else
+        {
+            <li class="nav-item mx-2">
+                <a class="nav-link text-white" asp-controller="Account" asp-action="Register">Register</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a class="nav-link text-white" asp-controller="Account" asp-action="Login">Login</a>
+            </li>
+        }
+
+    </ul>
+
+    
+    </body>
+    </html>

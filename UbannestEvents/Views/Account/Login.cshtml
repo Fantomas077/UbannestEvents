@@ -1,0 +1,49 @@
+﻿@model UbannestEvents.ViewModels.LoginVM
+
+@{
+    ViewData["Title"] = "Connexion";
+}
+
+<h2 class="text-center mb-4">Connexion</h2>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="form-label">Email Adresse</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="RememberME" class="form-check-input" />
+                <label asp-for="RememberME" class="form-check-label">Remeber Me</label>
+            </div>
+
+            @* Champ ReturnUrl (invisible à l'utilisateur) *@
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <button type="submit" class="btn btn-primary w-100">Sich Anmelden</button>
+        </form>
+
+        <div class="mt-3 text-center">
+            <a asp-controller="Account" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">Kein Konto ? Anmelden</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

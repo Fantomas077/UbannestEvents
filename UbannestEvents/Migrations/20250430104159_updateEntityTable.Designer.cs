@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UbannestEvents.Data;
 
@@ -11,9 +12,11 @@ using UbannestEvents.Data;
 namespace UbannestEvents.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250430104159_updateEntityTable")]
+    partial class updateEntityTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,37 +247,6 @@ namespace UbannestEvents.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("UbannestEvents.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CommenText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DatePosted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EventID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventID");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Komments");
-                });
-
             modelBuilder.Entity("UbannestEvents.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -315,33 +287,6 @@ namespace UbannestEvents.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("UbannestEvents.Models.Favori", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateAdd")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EventID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventID");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Favoris");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -395,25 +340,6 @@ namespace UbannestEvents.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UbannestEvents.Models.Comment", b =>
-                {
-                    b.HasOne("UbannestEvents.Models.Event", "Event")
-                        .WithMany("Komments")
-                        .HasForeignKey("EventID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UbannestEvents.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("UbannestEvents.Models.Event", b =>
                 {
                     b.HasOne("UbannestEvents.Models.Category", "Category")
@@ -425,40 +351,9 @@ namespace UbannestEvents.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("UbannestEvents.Models.Favori", b =>
-                {
-                    b.HasOne("UbannestEvents.Models.Event", "Event")
-                        .WithMany("Favoris")
-                        .HasForeignKey("EventID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UbannestEvents.Models.ApplicationUser", "User")
-                        .WithMany("Favoris")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("UbannestEvents.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Favoris");
-                });
-
             modelBuilder.Entity("UbannestEvents.Models.Category", b =>
                 {
                     b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("UbannestEvents.Models.Event", b =>
-                {
-                    b.Navigation("Favoris");
-
-                    b.Navigation("Komments");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,37 @@
+﻿@model UbannestEvents.Models.Category
+@{
+    ViewData["Title"] = "Create Category";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            
+            <div class="card col-md-12 p-3 mb-3 border-0 shadow ">
+                <h3 class="text-center text-success mb-3">Create Category</h3>
+                <form asp-controller="Category" asp-action="Create" method="post">
+                    <div class="mb-3 form-floating">
+                        <input asp-for="Name" class="form-control" />
+                        <label asp-for="Name" class="form-label"></label>
+                        
+                        <span asp-validation-for="Name" class="text-danger"></span>
+
+                    </div>
+                    <div class="">
+                        <button type="submit" asp-action="Create" class="w-25 btn btn-success">Create</button>
+                        <a asp-action="Index" class="btn btn-secondary w-25">Back To Home</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
