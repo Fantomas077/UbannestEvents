@@ -1,0 +1,40 @@
+﻿@model IEnumerable<UbannestEvents.Models.Favori>
+
+@{
+    ViewData["Title"] = "Meine Favoris";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4">Favori Events</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">Keine Favori Event.</div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var favori in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="~/images/Cover/@favori.Event.ImgageCovername" class="card-img-top" style="height: 200px; object-fit: cover;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@favori.Event.Title</h5>
+                            <p class="card-text">@Html.Raw(  @favori.Event.Description?.Substring(0, Math.Min(100, favori.Event.Description.Length)))...</p>
+                            <p class="text-muted"><i class="fas fa-calendar-alt"></i> @favori.Event.StartDate.ToShortDateString() - @favori.Event.EndDate.ToShortDateString()</p>
+                            <a asp-controller="Event" asp-action="EventsDetails" asp-route-id="@favori.Event.Id" class="btn btn-outline-primary btn-sm">Sehen</a>
+
+                            <form asp-action="ToggleFavori" method="post" class="d-inline">
+                                <input type="hidden" name="EventID" value="@favori.Event.Id" />
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-heart-broken"></i> wegmachen
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
