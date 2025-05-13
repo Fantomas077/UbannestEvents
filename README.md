@@ -44,7 +44,7 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
   ![Register](Assets/images/Register.jpeg)
 
 - 👤 Benutzerprofil:
-  ![Benutzerprofil](images/Bildschirmfoto_13-5-2025_143225_localhost.jpeg)
+  ![Benutzerprofil](Assets/images/Bildschirmfoto_13-5-2025_143225_localhost.jpeg)
 
 ---
 
