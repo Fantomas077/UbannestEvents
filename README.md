@@ -17,14 +17,42 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 
 ## 📸 Screenshots
 
-### 🏠 Startseite
-![Startseite](images/homepage.png)
+### 🏠 Startseite (Öffentlicher Bereich)
+![Startseite](Assets/images/HomePage.jpeg)
 
 ### 📄 Veranstaltungsdetails
-![Event Detail](images/event-detail.png)
+- Öffentliche Ansicht:
+  ![Event Detail](Assets/images/Eventdetails.jpeg)
+- Authentifizierter Benutzer:
+  ![Event Detail Mit User Authentificated](Assets/images/Eventdetails2.jpeg)
+
+---
+
+### 🔐 Authentifizierung (Benutzerbereich)
+
+- 🔑 Login-Seite:
+  ![Login](Assets/images/Login.jpeg)
+
+- 📝 Registrierung (Register):
+  ![Register](Assets/images/Register.jpeg)
+
+- 👤 Benutzerprofil:
+  ![Benutzerprofil](Assets/images/UserProfile.jpeg)
+
+---
 
 ### 👨‍💼 Admin-Bereich
-![Admin Panel](images/admin.png)
+
+- Übersicht:
+  ![Admin Panel](Assets/images/AdminPanel.jpeg)
+
+- Kategorienverwaltung:
+  ![Admin Panel Category View](Assets/images/AdminPanelCategory.jpeg)
+
+- Veranstaltungenverwaltung:
+  ![Admin Panel Event View](Assets/images/AdminPanelEvent.jpeg)
+
+
 
 
 ## 🛠️ Technologien
