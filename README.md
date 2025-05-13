@@ -26,6 +26,9 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 
 ### 👨‍💼 Admin-Bereich
 ![Admin Panel](Assets/images/AdminPanel.jpeg)
+![Admin Panel Category View](Assets/images/AdminPanelCategory.jpeg)
+![Admin Panel Event View](Assets/images/AdminPanelEvent.jpeg)
+
 
 
 ## 🛠️ Technologien
