@@ -64,24 +64,20 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 
 ## 🛠️ Technologien
 
-- ASP.NET Core MVC
-- Entity Framework Core
-- ASP.NET Identity
-- Bootstrap 5
-- MS SQL Server / SQLite (je nach Konfiguration)
+- **Backend**: ASP.NET Core MVC
+- **Datenbank**: Entity Framework Core + SQL Server / SQLite
+- **Authentifizierung**: ASP.NET Identity
+- **Frontend**: Razor Pages + Bootstrap 5
 
+---
 ## 🚀 Lokale Installation
 
 ### Voraussetzungen
 
 - [.NET SDK](https://dotnet.microsoft.com/en-us/download) (Version 8.0 oder höher empfohlen)
 - Visual Studio 2022 / 2025 (mit ASP.NET und Webentwicklung Workload)
-- SQL Server Express oder SQLite
+- SQL Server Express 
 
 
 
 
-1. **Projekt klonen**
-   ```bash
-   git clone https://github.com/dein-benutzername/ubannest-events.git
-   cd ubannest-events
