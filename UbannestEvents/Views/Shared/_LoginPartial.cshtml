@@ -19,11 +19,11 @@
 
             <li class="nav-item dropdown mx-2">
                 <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user-circle me-2"></i> Hallo, @user.FullName
+                    <i class="fas fa-user-circle me-2"></i> Hallo, @user?.FullName
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                     <li>
-                        <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil</a>
+                        <a class="dropdown-item" asp-controller="Profil" asp-action="Index"><i class="fas fa-user me-2"></i>Profil</a>
                     </li>
                     <li>
                         <a class="dropdown-item" asp-controller="Favori" asp-action="Index"><i class="fas fa-heart me-2"></i>My Favoris Event</a>

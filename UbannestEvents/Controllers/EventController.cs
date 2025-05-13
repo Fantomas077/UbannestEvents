@@ -17,12 +17,26 @@ namespace UbannestEvents.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var obj= _context.Events.Include(r=>r.Category).ToList();
-            
-            return View(obj);
+            int pageSize = 6; // nombre d'événements par page
+
+            var totalEvents = _context.Events.Count();
+            var totalPages = (int)Math.Ceiling((double)totalEvents / pageSize);
+
+            var events = _context.Events
+                .Include(e => e.Category)
+                .OrderByDescending(e => e.StartDate)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.TotalPages = totalPages;
+            ViewBag.CurrentPage = page;
+
+            return View(events);
         }
+
         public IActionResult Kat(string name)
         {
             var events = _context.Events.Include(e => e.Category).Where(r=>r.Category.Name==name).ToList();

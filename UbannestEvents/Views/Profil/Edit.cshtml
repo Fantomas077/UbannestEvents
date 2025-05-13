@@ -1,0 +1,31 @@
+﻿@model UbannestEvents.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Modifier le profil";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4">✏️  Edit profil</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="FullName" class="form-label">FullName</label>
+            <input asp-for="FullName" class="form-control"  />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Annuler</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
