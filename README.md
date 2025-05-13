@@ -22,10 +22,10 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 
 ### 📄 Veranstaltungsdetails
 ![Event Detail](Assets/images/Eventdetails.jpeg)
-![Event Detail_User Eingellogt](Assets/images/Eventdetails2.jpeg)
+![Event Detail Mit User Authentificated](Assets/images/Eventdetails2.jpeg)
 
 ### 👨‍💼 Admin-Bereich
-![Admin Panel](images/admin.png)
+![Admin Panel](Assets/images/AdminPanel.jpeg)
 
 
 ## 🛠️ Technologien
