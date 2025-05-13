@@ -18,7 +18,7 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 ## 📸 Screenshots
 
 ### 🏠 Startseite
-![Startseite](images/homepage.png)
+![Startseite](Assets/images/HomePage.jpeg)
 
 ### 📄 Veranstaltungsdetails
 ![Event Detail](images/event-detail.png)
