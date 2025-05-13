@@ -4,16 +4,28 @@ Ubannest Events ist eine Webanwendung, mit der Benutzer Veranstaltungen entdecke
 Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authentifizierung und Autorisierung.
 
 ## ✨ Funktionen
+- 🎭 Dynamischer Hero-Bereich
+- 📅 Veranstaltungen von heute und kommenden Tagen
+- 🔥 Meistgesehene Veranstaltungen
+- 📈 Besucherzähler pro Veranstaltung
+- 💬 Kommentarfunktion für jede Veranstaltung
+- 👥 Authentifizierung mit ASP.NET Identity (Admin / Benutzer)
+- 📷 Bilder-Upload und Anzeige für jedes Event
+- 🧭 Benutzerfreundliche Navigation mit responsive Menü
 
-- Benutzerregistrierung und -anmeldung
-- Veranstaltungen durchsuchen und nach Stichwörtern filtern
-- Anmeldung und Abmeldung zu Veranstaltungen
-- Verwaltung eigener Anmeldungen
-- Veranstaltungsverwaltung für Administratoren (Erstellen, Bearbeiten, Löschen)
-- Kategorisierung der Veranstaltungen
-- Pagination und Suche
-- AJAX-Interaktionen für bessere Benutzererfahrung
-- Sichere Rollen- und Zugriffsverwaltung
+---
+
+## 📸 Screenshots
+
+### 🏠 Startseite
+![Startseite](images/homepage.png)
+
+### 📄 Veranstaltungsdetails
+![Event Detail](images/event-detail.png)
+
+### 👨‍💼 Admin-Bereich
+![Admin Panel](images/admin.png)
+
 
 ## 🛠️ Technologien
 
