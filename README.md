@@ -74,8 +74,8 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 
 ### Voraussetzungen
 
-- [.NET SDK](https://dotnet.microsoft.com/en-us/download) (Version 8.0 oder höher empfohlen)
-- Visual Studio 2022 / 2025 (mit ASP.NET und Webentwicklung Workload)
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download) (Version 8.0 )
+- Visual Studio 2022 
 - SQL Server Express 
 
 
