@@ -97,7 +97,7 @@ namespace UbannestEvents.Controllers
        
         public IActionResult Login(string returnurl = null)
         {
-            returnurl ??= Url.Content("~/"); // ✅ Ne remplace que si null
+            returnurl ??= Url.Content("~/"); 
             var obj = new LoginVM { ReturnUrl = returnurl };
             return View(obj);
         }
@@ -115,13 +115,12 @@ namespace UbannestEvents.Controllers
 
                     if (result.Succeeded)
                     {
-                        // Rediriger selon le rôle, SANS tenir compte du ReturnUrl si Admin
                         if (await _userManager.IsInRoleAsync(user, "Admin"))
                         {
                             return RedirectToAction("Index", "Home", new { area = "Admin" });
                         }
 
-                        // Pour les autres utilisateurs (Customer), utiliser ReturnUrl si défini
+                       
                         if (await _userManager.IsInRoleAsync(user, "Customer"))
                         {
                             if (!string.IsNullOrEmpty(loginVM.ReturnUrl) && Url.IsLocalUrl(loginVM.ReturnUrl))
@@ -132,13 +131,12 @@ namespace UbannestEvents.Controllers
                             return RedirectToAction("Index", "Home");
                         }
 
-                        // Fallback générique
                         return RedirectToAction("Index", "Home");
                     }
 
                 }
 
-                // Email ou mot de passe incorrect
+               
                 ModelState.AddModelError(string.Empty, "Email ou mot de passe invalide.");
             }
 

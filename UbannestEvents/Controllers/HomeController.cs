@@ -26,7 +26,7 @@ namespace UbannestEvents.Controllers
 
             var Incoming = _context.Events
                 .Include(r => r.Category)
-                .Where(r => r.StartDate >= tomorrow) // tout ce qui est après aujourd'hui
+                .Where(r => r.StartDate >= tomorrow) 
                 .Take(4)
                 .ToList();
 
@@ -37,7 +37,7 @@ namespace UbannestEvents.Controllers
                 .ToList();
             var Most = _context.Events
                     .Include(r => r.Category)
-                    .OrderByDescending(r => r.ViewCount) // Trier par nombre de vues décroissant
+                    .OrderByDescending(r => r.ViewCount) 
                     .Take(4)
                     .ToList();
 
