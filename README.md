@@ -3,24 +3,31 @@
 Ubannest Events ist eine Webanwendung, mit der Benutzer Veranstaltungen entdecken, erstellen und sich dafür anmelden können.  
 Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authentifizierung und Autorisierung.
 
-## ✨ Funktionen
-- 🎭 Dynamischer Hero-Bereich
-- 📅 Veranstaltungen von heute und kommenden Tagen
-- 🔥 Meistgesehene Veranstaltungen
-- 📈 Besucherzähler pro Veranstaltung
-- 💬 Kommentarfunktion für jede Veranstaltung
-- 👥 Authentifizierung mit ASP.NET Identity (Admin / Benutzer)
-- 📷 Bilder-Upload und Anzeige für jedes Event
-- 🧭 Benutzerfreundliche Navigation mit responsive Menü
+##  Funktionen
+
+-  Dynamischer Hero-Bereich
+-  Veranstaltungen von heute und kommenden Tagen
+-  Meistgesehene Veranstaltungen
+-  Besucherzähler pro Veranstaltung
+-  Kommentarfunktion pro Event
+-  Favoritenfunktion für Veranstaltungen
+-  Benutzerprofil mit Bearbeitungsmöglichkeiten:
+  -  Name ändern
+  -  Passwort ändern
+  -  E-Mail-Adresse ändern
+-  Authentifizierung mit ASP.NET Identity (Admin / Benutzer)
+- Bilder-Upload für jedes Event
+-  Responsive Navigation & Benutzerfreundliches Design
+-  Admin-Bereich zur Verwaltung von Kategorien & Events
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
-### 🏠 Startseite (Öffentlicher Bereich)
+###  Startseite (Öffentlicher Bereich)
 ![Startseite](Assets/images/HomePage.jpeg)
 
-### 📄 Veranstaltungsdetails
+###  Veranstaltungsdetails
 - Öffentliche Ansicht:
   ![Event Detail](Assets/images/Eventdetails.jpeg)
 - Authentifizierter Benutzer:
@@ -28,20 +35,20 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 
 ---
 
-### 🔐 Authentifizierung (Benutzerbereich)
+###  Authentifizierung (Benutzerbereich)
 
-- 🔑 Login-Seite:
-  ![Login](Assets/images/Login.jpeg)
+-  Login-Seite:
+  ![Login](Assets/images/LogIn.jpeg)
 
-- 📝 Registrierung (Register):
+-  Registrierung (Register):
   ![Register](Assets/images/Register.jpeg)
 
-- 👤 Benutzerprofil:
-  ![Benutzerprofil](Assets/images/UserProfile.jpeg)
+-  Benutzerprofil:
+  ![Benutzerprofil](Assets/images/Bildschirmfoto_13-5-2025_143225_localhost.jpeg)
 
 ---
 
-### 👨‍💼 Admin-Bereich
+###  Admin-Bereich
 
 - Übersicht:
   ![Admin Panel](Assets/images/AdminPanel.jpeg)
@@ -55,26 +62,22 @@ Das Projekt wurde mit ASP.NET Core MVC entwickelt und nutzt Identity für Authen
 
 
 
-## 🛠️ Technologien
+##  Technologien
 
-- ASP.NET Core MVC
-- Entity Framework Core
-- ASP.NET Identity
-- Bootstrap 5
-- MS SQL Server / SQLite (je nach Konfiguration)
+- **Backend**: ASP.NET Core MVC
+- **Datenbank**: Entity Framework Core + SQL Server / SQLite
+- **Authentifizierung**: ASP.NET Identity
+- **Frontend**: Razor Pages + Bootstrap 5
 
-## 🚀 Lokale Installation
+---
+##  Lokale Installation
 
 ### Voraussetzungen
 
-- [.NET SDK](https://dotnet.microsoft.com/en-us/download) (Version 8.0 oder höher empfohlen)
-- Visual Studio 2022 / 2025 (mit ASP.NET und Webentwicklung Workload)
-- SQL Server Express oder SQLite
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download) (Version 8.0 )
+- Visual Studio 2022 
+- SQL Server Express 
 
 
 
 
-1. **Projekt klonen**
-   ```bash
-   git clone https://github.com/dein-benutzername/ubannest-events.git
-   cd ubannest-events
